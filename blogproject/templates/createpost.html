@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Create Post{% endblock %}
+
+{% block content %}
+
+    {% if user.is_authenticated %}
+
+<div class="card shadow-sm m-3 bg-white">
+  <div class="card-header">
+    Create New Post
+  </div>
+<div class="card-body">
+<form method="post" style="width:500px;margin:50px auto 0px auto;">
+    {% csrf_token %}
+
+
+    <div class="input-group mb-3">
+      <span class="input-group-text">Post Title:</span>
+      <input class="form-control" type="text" name="post_title" maxlength="200" minlength="5" required id="id_post_title">
+    </div>
+
+
+
+
+
+    <div class="card mt-3 mb-3">
+    <div class="card-header">
+        Post Content
+    </div>
+    <div class="card-body">
+        <textarea placeholder="Start typing..." class="form-control" name="post_content" cols="40" rows="10" maxlength="10000" minlength="50" required id="id_post_content"></textarea>
+    </div>
+    </div>
+
+    <input class="btn btn-primary" type="submit" value="Create Post">
+</form>
+</div>
+</div>
+
+
+<style>
+    .btn-pink {
+        color: #fff;
+        background-color: #e892c3;
+        border-color: #e892c3;
+    }
+    .btn-pink:hover {
+        color: #fff;
+        background-color: #db70ad;
+        border-color: #db70ad;
+    }
+    .btn-check:focus+.btn-pink, .btn-pink:focus {
+        color: #fff;
+        background-color: #e892c3;
+        border-color: #e892c3;
+        box-shadow: 0 0 0 0.25rem rgb(66 70 73 / 50%);
+    }
+</style>
+
+
+
+
+
+
+
+
+    {% else %}
+        <p>Giriş yapmadın.</p>
+        <a href="{% url 'login' %}">Log In</a>
+    {% endif %}
+
+{% endblock %}

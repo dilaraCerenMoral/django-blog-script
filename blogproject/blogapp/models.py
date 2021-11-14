@@ -11,10 +11,10 @@ class BaseModel(models.Model):
 
 class Post(BaseModel):
     title = models.CharField(max_length=200)
-    last_edit_datetime = models.DateTimeField(null=True)
+    last_edit_datetime = models.DateTimeField(null=True, blank=True)
     content = models.TextField()
     total_views = models.BigIntegerField(default=0,null=False, blank=True)
-    image_name = models.CharField(max_length=100)
+    image_name = models.CharField(max_length=100, null=True, blank=True)
 
 
 class Comment(BaseModel):

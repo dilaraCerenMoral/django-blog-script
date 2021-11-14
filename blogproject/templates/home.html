@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+
+{% block title %}başlık{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+    SLM {{user.username}}!
+    <br/>
+    Bugün hava çok {{hava_durumu}}.
+    <br/>
+    <a href="{% url 'home' %}">Home</a>
+{% else %}
+    <p>Giriş yapmadın.</p>
+    <a href="{% url 'login' %}">Log In</a>
+{% endif %}
+
+{% endblock %}
